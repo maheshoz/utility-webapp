@@ -4,13 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MD5 Hash Generator</title>
+    <title>SHA-512 Hash Generator</title>
     <link rel="stylesheet" href="./style.css" />
 
     <!-- scripts for hashing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/hmac-sha1.min.js"></script> -->
   </head>
   <body>
     <header>
@@ -28,10 +28,9 @@
     </nav>
 
     <main>
-      <h3>MD5 Hash Generator</h3>
+      <h3>SHA-512 Hash Generator</h3>
       <textarea rows="4" cols="50" id="inputField"></textarea>
       <br />
-      <!-- <button class="inp-btn" id="encodeBtn">Encode</button> -->
       <button class="inp-btn" id="generateBtn">Generate</button>
       <br />
       <textarea rows="4" cols="50" id="resultField"></textarea>
@@ -43,7 +42,7 @@
       const resultField = document.querySelector("#resultField");
 
       generateBtn.addEventListener("click", () => {
-        const hash = CryptoJS.MD5(inputField.value);
+        const hash = CryptoJS.SHA512(inputField.value);
         resultField.value = hash;
 
       });

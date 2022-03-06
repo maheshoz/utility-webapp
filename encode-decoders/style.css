@@ -68,3 +68,7 @@ main {
   margin-top: 2rem;
   margin-left: 2rem;
 }
+
+textarea {
+  padding: 0;
+}
