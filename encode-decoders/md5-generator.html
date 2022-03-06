@@ -4,8 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bse64 decoder</title>
+    <title>MD5 Hash Generator</title>
     <link rel="stylesheet" href="./style.css" />
+
+    <!-- scripts for hashing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+
   </head>
   <body>
     <header>
@@ -23,28 +28,27 @@
     </nav>
 
     <main>
-      <h3>Base64 Decoder</h3>
+      <h3>MD5 Hash Generator</h3>
       <textarea rows="4" cols="50" id="inputField"> </textarea>
       <br />
       <!-- <button class="inp-btn" id="encodeBtn">Encode</button> -->
-      <button class="inp-btn" id="decodeBtn">Decode</button>
+      <button class="inp-btn" id="generateBtn">Generate</button>
       <br />
       <textarea rows="4" cols="50" id="resultField"> </textarea>
     </main>
 
     <script>
       const inputField = document.querySelector("#inputField");
-      // const encodeBtn = document.querySelector("#encodeBtn");
-      const decodeBtn = document.querySelector("#decodeBtn");
+      const generateBtn = document.querySelector("#generateBtn");
       const resultField = document.querySelector("#resultField");
 
-      decodeBtn.addEventListener("click", () => {
-        resultField.value = atob(inputField.value);
+      generateBtn.addEventListener("click", () => {
+        const hash = CryptoJS.MD5(inputField.value);
+        resultField.value = hash;
+
       });
 
-      // decodeBtn.addEventListener("click", () => {
-      //   resultField.value = decodeURIComponent(inputField.value);
-      // });
+    
     </script>
   </body>
 </html>
