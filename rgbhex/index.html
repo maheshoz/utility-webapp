@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RGB/HEX</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./hexRgb.js"></script>
+    <script src="./rgbHex.js"></script>
+    <style>
+      .color-btn {
+        width: 80%;
+        height: 150px;
+        background-color: #000;
+        border: 0;
+        outline: 0;
+        border-radius: 30px;
+        box-shadow: 2px 5px 10px 2px #000000a6;
+        display: block;
+        margin: 0 auto;
+      }
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      @media screen and (max-width: 600px) {
+        .flex-container {
+          flex-direction: column;
+        }
+      }
+
+      .convert-btn {
+        display: inline-block;
+        margin-right: 2rem;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="btn" href="../index.html">Go to homepage</a>
+      <h1 class="welcome-text">Welcome to RGB/HEX conversion</h1>
+    </header>
+
+    <main>
+      <h3>RGB/HEX</h3>
+      <br />
+      <button class="color-btn" id="color-btn"></button>
+      <div class="flex-container">
+        <div>
+          <p>RGB</p>
+          <input type="text" id="red-input" placeholder="0" />
+          <input type="text" id="green-input" placeholder="0" />
+          <input type="text" id="blue-input" placeholder="0" />
+          <p>RGB value : <span id="rgb-value">rgb(0,0,0)</span></p>
+        </div>
+
+        <div>
+          <p>Hex</p>
+          <input type="text" id="hex-input" placeholder="000" />
+          <p>HEX value : <span id="hex-value">#000</span></p>
+        </div>
+      </div>
+      <button class="convert-btn" id="rgb-convert">RGB to hex Convert</button>
+      <button class="convert-btn" id="hex-convert">Hex to rgb Convert</button>
+
+      <div style="margin-bottom: 200px"></div>
+
+      <br />
+    </main>
+
+    <script>
+      // console.log(hexRgb)
+      let redInputField = document.querySelector("#red-input");
+      let blueInputField = document.querySelector("#blue-input");
+      let greenInputField = document.querySelector("#green-input");
+
+      let hexInputField = document.querySelector("#hex-input");
+      const rgbButton = document.getElementById("rgb-convert");
+      const hexButton = document.getElementById("hex-convert");
+      const colorBox = document.getElementById("color-btn");
+
+      hexButton.addEventListener("click", () => {
+        let colorObj = hexRgb(hexInputField.value);
+
+        console.log(colorObj);
+        let red = colorObj.red;
+        let blue = colorObj.blue;
+        let green = colorObj.green;
+
+        redInputField.value = red;
+        blueInputField.value = blue;
+        greenInputField.value = green;
+
+        colorBox.style.backgroundColor = `rgb(${red},${green},${blue})`;
+        document.getElementById(
+          "rgb-value"
+        ).innerText = `rgb(${red},${green},${blue})`;
+        document.getElementById("hex-value").innerText =
+          "#" + hexInputField.value;
+        // console.log(rgbToHex(red,blue,green));
+      });
+
+      rgbButton.addEventListener("click", () => {
+        let red = Number(redInputField.value);
+        let green = Number(greenInputField.value);
+        let blue = Number(blueInputField.value);
+
+        const hexColor = rgbHex(red, green, blue);
+        document.getElementById(
+          "rgb-value"
+        ).innerText = `rgb(${red},${green},${blue})`;
+        document.getElementById("hex-value").innerText = "#" + hexColor;
+        hexInputField.value = hexColor;
+
+        colorBox.style.backgroundColor = `rgb(${red},${green},${blue})`;
+        console.log(hexColor);
+      });
+
+      // function componentToHex(c) {
+      //   var hex = c.toString(16);
+      //   return hex.length == 1 ? "0" + hex : hex;
+      // }
+
+      // function rgbToHex(r, g, b) {
+      //   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+      // }
+    </script>
+  </body>
+</html>

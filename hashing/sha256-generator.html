@@ -4,34 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MD5 Hash Generator</title>
+    <title>SHA-256 Hash Generator</title>
     <link rel="stylesheet" href="./style.css" />
 
     <!-- scripts for hashing -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/hmac-sha1.min.js"></script> -->
   </head>
   <body>
     <header>
       <a class="btn" href="../index.html">Go to homepage</a>
-      <h1 class="welcome-text">Welcome to Encoder Decoders webapp</h1>
+      <h1 class="welcome-text">Welcome to Hashing</h1>
     </header>
     <nav>
-      <li><a href="./index.html">URL encode decode</a></li>
-      <li><a href="./base64-decode.html">Base64 Decode</a></li>
-      <li><a href="./base64-encode.html">Base64 Encode </a></li>
-      <li><a href="./md5-generator.html">MD5 Hash Generator</a></li>
+      <li><a href="./index.html">MD5 Hash Generator</a></li>
       <li><a href="./sha1-generator.html">SHA-1 hash Generator</a></li>
       <li><a href="./sha256-generator.html">SHA-256 Hash Generator</a></li>
       <li><a href="./sha512-generator.html">SHA-512 Hash Generator</a></li>
     </nav>
 
     <main>
-      <h3>MD5 Hash Generator</h3>
+      <h3>SHA-256 Hash Generator</h3>
       <textarea rows="4" cols="50" id="inputField"></textarea>
       <br />
-      <!-- <button class="inp-btn" id="encodeBtn">Encode</button> -->
       <button class="inp-btn" id="generateBtn">Generate</button>
       <br />
       <textarea rows="4" cols="50" id="resultField"></textarea>
@@ -43,12 +39,9 @@
       const resultField = document.querySelector("#resultField");
 
       generateBtn.addEventListener("click", () => {
-        const hash = CryptoJS.MD5(inputField.value);
+        const hash = CryptoJS.SHA256(inputField.value);
         resultField.value = hash;
-
       });
-
-    
     </script>
   </body>
 </html>
